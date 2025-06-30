@@ -1,0 +1,67 @@
+{
+  "manifest_version": 3,
+  "name": "TextLens AI v2",
+  "version": "2.0.0",
+  "description": "Smart OCR-to-AI assistant with advanced text extraction and analysis",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "tabs",
+    "storage",
+    "commands"
+  ],
+  "host_permissions": [
+    "<all_urls>",
+    "https://api.groq.com/*",
+    "https://generativelanguage.googleapis.com/*"
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "assets/icon16.png",
+      "48": "assets/icon48.png",
+      "128": "assets/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "assets/icon16.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css": ["content.css"],
+      "js": [
+        "libs/html2canvas.min.js",
+        "libs/tesseract.min.js",
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "libs/html2canvas.min.js", 
+        "libs/tesseract.min.js",
+        "libs/tesseract-core.wasm.js",
+        "libs/worker.min.js"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "commands": {
+    "capture-screen": {
+      "suggested_key": {
+        "default": "Ctrl+Q",
+        "mac": "Command+Shift+C"
+      },
+      "description": "Capture screen area for OCR"
+    }
+  },
+  "options_page": "options/options.html"
+}

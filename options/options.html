@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>TextLens AI v2 - Settings</title>
+  <link rel="stylesheet" type="text/css" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <h1>TextLens AI v2</h1>
+          <p>Settings & Configuration</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="settings-section">
+        <h2>API Configuration</h2>
+        
+        <div class="setting-group">
+          <label for="apiProvider">AI Provider</label>
+          <select id="apiProvider">
+            <option value="groq">Groq (Recommended - Fast & Free)</option>
+            <option value="gemini">Google Gemini</option>
+          </select>
+          <p class="setting-description">Choose your preferred AI provider for text analysis.</p>
+        </div>
+
+        <div class="setting-group" id="groqSettings">
+          <label for="groqApiKey">Groq API Key</label>
+          <input type="password" id="groqApiKey" placeholder="Enter your Groq API key">
+          <p class="setting-description">
+            Get your free API key from <a href="https://console.groq.com/keys" target="_blank">Groq Console</a>. 
+            Groq offers fast inference with generous free tier limits.
+          </p>
+        </div>
+
+        <div class="setting-group" id="geminiSettings" style="display: none;">
+          <label for="geminiApiKey">Gemini API Key</label>
+          <input type="password" id="geminiApiKey" placeholder="Enter your Gemini API key">
+          <p class="setting-description">
+            Get your API key from <a href="https://makersuite.google.com/app/apikey" target="_blank">Google AI Studio</a>.
+          </p>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <h2>OCR Configuration</h2>
+        
+        <div class="setting-group">
+          <label for="ocrLanguage">Primary Language</label>
+          <select id="ocrLanguage">
+            <option value="eng">English</option>
+            <option value="spa">Spanish</option>
+            <option value="fra">French</option>
+            <option value="deu">German</option>
+            <option value="ita">Italian</option>
+            <option value="por">Portuguese</option>
+            <option value="rus">Russian</option>
+            <option value="chi_sim">Chinese (Simplified)</option>
+            <option value="chi_tra">Chinese (Traditional)</option>
+            <option value="jpn">Japanese</option>
+            <option value="kor">Korean</option>
+            <option value="ara">Arabic</option>
+            <option value="hin">Hindi</option>
+          </select>
+          <p class="setting-description">Select the primary language for OCR text recognition.</p>
+        </div>
+
+        <div class="setting-group">
+          <label for="ocrQuality">Image Quality</label>
+          <select id="ocrQuality">
+            <option value="1">Standard (1x)</option>
+            <option value="2">High (2x) - Recommended</option>
+            <option value="3">Ultra (3x)</option>
+          </select>
+          <p class="setting-description">Higher quality improves OCR accuracy but increases processing time.</p>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <h2>Quick Actions</h2>
+        
+        <div class="setting-group">
+          <label for="defaultAction">Default Action</label>
+          <select id="defaultAction">
+            <option value="analyze">Analyze</option>
+            <option value="explain">Explain</option>
+            <option value="summarize">Summarize</option>
+            <option value="translate">Translate</option>
+            <option value="solve">Solve</option>
+          </select>
+          <p class="setting-description">Choose the default action when capturing text.</p>
+        </div>
+
+        <div class="setting-group">
+          <label>Custom Prompts</label>
+          <div class="custom-prompts">
+            <div class="custom-prompt-item">
+              <input type="text" placeholder="Prompt name" class="prompt-name">
+              <textarea placeholder="Enter your custom prompt..." class="prompt-text"></textarea>
+              <button class="btn-remove">Remove</button>
+            </div>
+          </div>
+          <button id="addCustomPrompt" class="btn-secondary">Add Custom Prompt</button>
+          <p class="setting-description">Create custom prompts for specific analysis tasks.</p>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <h2>Keyboard Shortcuts</h2>
+        
+        <div class="setting-group">
+          <label>Capture Screen Area</label>
+          <div class="shortcut-display">
+            <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>
+          </div>
+          <p class="setting-description">Global hotkey to start screen area selection.</p>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <h2>Privacy & Data</h2>
+        
+        <div class="setting-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="saveHistory">
+            <span class="checkmark"></span>
+            Save capture history locally
+          </label>
+          <p class="setting-description">Store your captures and analysis results for quick access.</p>
+        </div>
+
+        <div class="setting-group">
+          <label for="historyLimit">History Limit</label>
+          <select id="historyLimit">
+            <option value="10">10 items</option>
+            <option value="25">25 items</option>
+            <option value="50">50 items</option>
+            <option value="100">100 items</option>
+          </select>
+          <p class="setting-description">Maximum number of items to keep in history.</p>
+        </div>
+
+        <div class="setting-group">
+          <button id="clearAllData" class="btn-danger">Clear All Data</button>
+          <p class="setting-description">Remove all stored settings, history, and cached data.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="status" id="status"></div>
+      <div class="actions">
+        <button id="resetSettings" class="btn-secondary">Reset to Defaults</button>
+        <button id="saveSettings" class="btn-primary">Save Settings</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
