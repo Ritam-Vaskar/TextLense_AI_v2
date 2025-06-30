@@ -48,8 +48,6 @@ TextLens AI is a Chrome/Edge extension designed to extract and analyze **non-cop
 ---
 
 
----
-
 ## ⚙️ Configuration
 
 ### Setting Up API Keys
@@ -117,11 +115,6 @@ TextLens AI is a Chrome/Edge extension designed to extract and analyze **non-cop
 
 ---
 
-## 📷 Demo Screenshots
-
-> _(Add GIFs or images here showing each feature)_
-
----
 
 ## 🙌 Contributing
 
